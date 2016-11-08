@@ -56,9 +56,11 @@ if(!empty($url_to_shorten) && preg_match('|^https?://|', $url_to_shorten))
 function getShortenedURLFromID ($integer, $base = ALLOWED_CHARS)
 {
 	$length = strlen($base);
+	$out = '';
 	while($integer > $length - 1)
 	{
-		$out = $base[fmod($integer, $length)] . $out;
+		$index = intval(fmod($integer, $length));
+		$out = $base[index] . $out;
 		$integer = floor( $integer / $length );
 	}
 	return $base[$integer] . $out;
